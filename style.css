@@ -1,0 +1,329 @@
+*{box-sizing:border-box}
+:root{
+  --gold:#e5b72e;--gold2:#f6d66d;--cream:#fffaf0;--green:#55764a;--dark:#2e2a22;
+  --shadow:0 20px 60px rgba(73,55,16,.15)
+}
+html{scroll-behavior:smooth;overscroll-behavior:none}
+body{margin:0;color:var(--dark);background:var(--cream);font-family:Poppins,system-ui,sans-serif;overflow-x:hidden}
+html.page-locked,body.page-locked{overflow:hidden!important;height:100%!important;overscroll-behavior:none!important}
+body.page-locked{position:fixed;left:0;right:0;top:0;width:100%;touch-action:none}
+button{font:inherit}
+.hero{min-height:100svh;position:relative;display:grid;place-items:center;overflow:hidden;background:
+ radial-gradient(circle at 50% 80%,rgba(246,214,109,.42),transparent 35%),
+ linear-gradient(180deg,#fffdf7 0%,#fff8df 58%,#e8efdf 100%)}
+.hero-content{position:relative;z-index:5;text-align:center;padding:32px 20px;max-width:760px}
+.eyebrow{margin:0 0 10px;text-transform:uppercase;letter-spacing:.22em;font-size:.75rem;color:#8b722d;font-weight:600}
+h1,h2{font-family:"Cormorant Garamond",serif}
+h1{font-size:clamp(4rem,11vw,8.5rem);line-height:.82;margin:0 0 25px;font-weight:700}
+h1 span{color:#d9aa22}
+h2{font-size:clamp(2.4rem,5vw,4.4rem);line-height:.95;margin:0 0 18px}
+p{line-height:1.75}
+.hero-subtitle{font-size:1.05rem;opacity:.78;margin:0 auto 28px}
+.primary-btn,.secondary-btn,.icon-btn{border:0;cursor:pointer;transition:.25s ease}
+.primary-btn{background:var(--dark);color:white;border-radius:999px;padding:15px 25px;box-shadow:0 10px 30px rgba(46,42,34,.18)}
+.primary-btn:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(46,42,34,.25)}
+.primary-btn.small{padding:11px 18px}
+.secondary-btn{background:white;border:1px solid rgba(46,42,34,.12);border-radius:999px;padding:12px 22px;box-shadow:0 8px 25px rgba(0,0,0,.06)}
+.scroll-hint{position:absolute;z-index:5;bottom:22px;left:50%;transform:translateX(-50%);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;opacity:.55}
+.scroll-hint span{display:block;text-align:center;font-size:1.2rem}
+.section{padding:110px 6vw;position:relative}
+.section-heading{max-width:720px;margin:0 auto 50px;text-align:center}
+.section-heading p:last-child{opacity:.7}
+.intro{padding-bottom:45px}
+.bouquets{background:#f5f1df}
+.bouquet-grid{max-width:1250px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.bouquet-card{position:relative;min-height:520px;border-radius:35px;overflow:hidden;background:linear-gradient(145deg,#fefcf5,#e9eedc);box-shadow:var(--shadow);cursor:pointer;isolation:isolate;transition:transform .35s ease}
+.bouquet-card:hover{transform:translateY(-8px) rotate(-.5deg)}
+.bouquet-card .photo{position:absolute;z-index:4;width:48%;aspect-ratio:4/5;object-fit:cover;left:50%;top:48%;transform:translate(-50%,-50%) rotate(var(--rot));border:12px solid white;border-bottom-width:35px;box-shadow:0 16px 35px rgba(48,38,13,.22);background:#eee}
+.bouquet-card .photo.missing{object-fit:contain;padding:20px}
+.photo-label{position:absolute;z-index:6;bottom:18px;left:50%;transform:translateX(-50%);font-family:"Cormorant Garamond",serif;font-size:1.35rem;background:rgba(255,255,255,.85);padding:6px 14px;border-radius:20px;white-space:nowrap}
+.flower-svg{position:absolute;z-index:2;width:170px;height:170px;filter:drop-shadow(0 10px 9px rgba(70,55,15,.13));transform-origin:center bottom}
+.flower-svg.sunflower{width:170px;height:170px}
+.flower-svg.lily{width:155px;height:155px}
+.flower-stem{position:absolute;z-index:1;width:5px;border-radius:10px;background:linear-gradient(90deg,#46603d,#6d8b56,#385035);transform-origin:bottom center}
+.leaf{position:absolute;z-index:2;width:70px;height:30px;border-radius:100% 0 100% 0;background:linear-gradient(135deg,#718d5b,#385435);transform-origin:0 50%}
+.bouquet-card .stem1{height:330px;left:25%;bottom:-20px;transform:rotate(-8deg)}
+.bouquet-card .stem2{height:350px;left:52%;bottom:-25px;transform:rotate(3deg)}
+.bouquet-card .stem3{height:310px;left:72%;bottom:-20px;transform:rotate(10deg)}
+.bouquet-card .leaf1{left:24%;bottom:150px;transform:rotate(18deg)}
+.bouquet-card .leaf2{left:60%;bottom:180px;transform:rotate(155deg)}
+.bouquet-card .leaf3{left:43%;bottom:105px;transform:rotate(205deg)}
+.bouquet-card .f1{left:0;top:45px;transform:rotate(-12deg)}
+.bouquet-card .f2{right:-10px;top:75px;transform:rotate(13deg)}
+.bouquet-card .f3{left:13%;bottom:35px;transform:rotate(-10deg)}
+.bouquet-card .f4{right:12%;bottom:55px;transform:rotate(8deg)}
+.bouquet-card .l1{left:28%;top:10px;transform:rotate(-8deg)}
+.bouquet-card .l2{right:22%;top:180px;transform:rotate(17deg)}
+.moments{background:#fffdf7}
+.memory-player{max-width:780px;margin:auto;text-align:center}
+.memory-frame{position:relative;min-height:620px;display:grid;place-items:center}
+.memory-photo-wrap{position:relative;width:min(75vw,480px);aspect-ratio:4/5;z-index:4}
+.memory-photo-wrap img{width:100%;height:100%;object-fit:cover;border:14px solid white;border-bottom-width:45px;box-shadow:var(--shadow);transition:opacity .6s ease,transform .6s ease;background:#eee}
+.memory-photo-wrap img.fade-out{opacity:0;transform:scale(.97)}
+.photo-fallback{position:absolute;inset:14px 14px 45px;display:none;place-items:center;text-align:center;padding:30px;background:linear-gradient(145deg,#f5e5a7,#fffaf0);color:#5c512f}
+.photo-fallback span{font-size:3rem}
+.photo-fallback small{max-width:250px;display:block;opacity:.7}
+.memory-flower{position:absolute;z-index:3;width:220px;height:220px;opacity:.98}
+.flower-left{left:2%;bottom:8%;transform:rotate(-20deg)}
+.flower-right{right:2%;top:8%;transform:rotate(25deg)}
+.memory-controls{display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:12px;width:min(100%,560px);margin:10px auto 25px;padding:0 10px;box-sizing:border-box}
+.icon-btn{width:48px;height:48px;min-width:48px;border-radius:50%;background:#f0ead6;color:var(--dark);position:relative;z-index:20;flex-shrink:0;cursor:pointer}
+.icon-btn:active{transform:scale(.95)}
+.icon-btn:hover{transform:scale(1.08)}
+.progress-dots{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;width:100%;overflow:hidden;padding:8px 2px;box-sizing:border-box}
+.progress-dots .dot{flex:0 0 auto}
+.dot{width:8px;height:8px;border-radius:50%;background:#d5ceb9;transition:.25s}
+.dot.active{width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.music{background:#f5f1df}
+.music-card{max-width:1000px;margin:auto;padding:45px;border-radius:35px;background:rgba(255,255,255,.7);box-shadow:var(--shadow);display:grid;grid-template-columns:auto 1fr;gap:25px;align-items:center}
+.music-flower{font-size:4rem}
+.audio-player{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center}
+.wave{height:35px;display:flex;gap:4px;align-items:center;justify-content:center}
+.wave i{display:block;width:4px;height:10px;background:#d1aa2e;border-radius:5px;animation:none}
+.audio-playing .wave i{animation:wave .8s ease-in-out infinite alternate}
+.audio-playing .wave i:nth-child(2){animation-delay:.1s}.audio-playing .wave i:nth-child(3){animation-delay:.2s}.audio-playing .wave i:nth-child(4){animation-delay:.3s}.audio-playing .wave i:nth-child(5){animation-delay:.15s}.audio-playing .wave i:nth-child(6){animation-delay:.25s}.audio-playing .wave i:nth-child(7){animation-delay:.05s}
+#seek{width:100%;accent-color:#cda62a}
+#timeLabel{font-variant-numeric:tabular-nums;font-size:.85rem;opacity:.65}
+.finale{min-height:90svh;position:relative;overflow:hidden;display:grid;place-items:center;text-align:center;background:linear-gradient(180deg,#f7f0d5,#dce7d4)}
+.final-content{position:relative;z-index:8;max-width:850px;padding:60px 25px}
+.final-content h2{font-size:clamp(3rem,6vw,5.6rem)}
+.final-content p:not(.eyebrow){opacity:.72}
+.final-garden{position:absolute;inset:auto 0 0;height:58%;pointer-events:none}
+.final-garden .flower-svg{width:190px;height:190px}
+.final-garden .flower-stem{height:310px}
+.petals{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.petal{position:absolute;top:-30px;width:11px;height:18px;border-radius:100% 0 100% 0;background:#e8bd35;opacity:.7;animation:fall linear forwards}
+.modal{display:none;position:fixed;inset:0;z-index:100;place-items:center;padding:20px}
+.modal.open{display:grid}
+.modal-backdrop{position:absolute;inset:0;background:rgba(25,21,12,.72);backdrop-filter:blur(8px)}
+.modal-card{position:relative;z-index:2;width:min(900px,92vw);max-height:90vh;display:flex;flex-direction:column;align-items:center}
+.tap-hint{color:white;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;margin:0 0 12px;text-shadow:0 2px 10px rgba(0,0,0,.45);pointer-events:none}
+.photo-flip{width:min(600px,86vw);height:min(78vh,720px);perspective:1400px;cursor:pointer}
+.photo-flip-inner{position:relative;width:100%;height:100%;transition:transform .75s cubic-bezier(.2,.75,.25,1);transform-style:preserve-3d}
+.photo-flip.flipped .photo-flip-inner{transform:rotateY(180deg)}
+.photo-flip-front,.photo-flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:8px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.35)}
+.photo-flip-front{background:white;display:flex;align-items:center;justify-content:center}
+.photo-flip-front img{display:block;width:100%;height:100%;object-fit:contain;background:white;cursor:pointer}
+.photo-flip-back{transform:rotateY(180deg);background:linear-gradient(145deg,#fff8d9,#f1e6b6);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(28px,6vw,70px);color:#4a4025}
+.photo-flip-back span{font-size:clamp(3rem,8vw,5rem);margin-bottom:20px}
+.photo-flip-back p{font-family:"Cormorant Garamond",serif;font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.15;margin:0;max-width:650px}
+.modal-close{position:absolute;right:-18px;top:28px;z-index:5;border:0;background:white;width:42px;height:42px;border-radius:50%;font-size:1.6rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(600deg)}}
+@keyframes wave{from{height:8px}to{height:32px}}
+@media(max-width:900px){
+ .bouquet-grid{grid-template-columns:1fr 1fr}
+ .bouquet-card{min-height:500px}
+ .music-card{grid-template-columns:1fr;text-align:center}.audio-player{grid-template-columns:1fr}
+ .memory-flower{width:145px;height:145px}
+}
+@media(max-width:620px){
+ .section{padding:80px 20px}
+ .bouquet-grid{grid-template-columns:1fr}
+ .bouquet-card{min-height:470px}
+ .memory-frame{min-height:500px}
+ .memory-photo-wrap{width:min(78vw,360px)}
+ .memory-controls{grid-template-columns:50px minmax(0,1fr) 50px;gap:8px;width:100%;padding:0 2px;margin-top:14px}
+ .memory-controls .icon-btn{width:50px;height:50px;min-width:50px;font-size:1.15rem}
+ .progress-dots{max-width:100%;gap:8px}
+ .flower-left{left:-12%;bottom:5%}.flower-right{right:-12%;top:5%}
+ .music-card{padding:30px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+
+
+/* Música integrada en Capa 3 */
+.music-float-btn{
+  position:sticky;
+  top:18px;
+  margin:0 24px 10px auto;
+  z-index:30;
+  width:58px;
+  height:58px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 10px 30px rgba(60,45,10,.18);
+  font-size:1.65rem;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.music-float-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 34px rgba(60,45,10,.23)}
+.music-float-btn.playing{animation:musicPulse 1.35s ease-in-out infinite;box-shadow:0 0 0 8px rgba(235,190,70,.13),0 14px 34px rgba(60,45,10,.2)}
+@keyframes musicPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+
+/* Pantalla inicial obligatoria de música para Capa 3 */
+.music-gate{
+  position:relative;
+  z-index:25;
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:50px 20px;
+  transition:opacity .45s ease, transform .45s ease, visibility .45s ease;
+}
+.music-gate.hidden{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  position:absolute;
+  inset:0;
+  min-height:0;
+  height:0;
+  overflow:hidden;
+}
+.music-gate-title{
+  margin:0 0 8px;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  font-weight:700;
+  color:#4a4025;
+}
+.music-gate-subtitle{
+  margin:0 0 28px;
+  color:#766a4b;
+  font-size:1.05rem;
+}
+.music-gate .gate-music-btn{
+  position:relative;
+  top:auto;
+  right:auto;
+  margin:0;
+  width:112px;
+  height:112px;
+  border:5px solid rgba(255,255,255,.96);
+  background:#f4c542;
+  font-size:3.2rem;
+  box-shadow:0 0 0 12px rgba(244,197,66,.16),0 18px 45px rgba(60,45,10,.25);
+  animation:musicGatePulse 1.5s ease-in-out infinite;
+}
+.music-gate .gate-music-btn:hover{transform:scale(1.08);}
+@keyframes musicGatePulse{0%,100%{transform:scale(1);box-shadow:0 0 0 12px rgba(244,197,66,.16),0 18px 45px rgba(60,45,10,.25)}50%{transform:scale(1.08);box-shadow:0 0 0 22px rgba(244,197,66,.08),0 22px 55px rgba(60,45,10,.28)}}
+
+/* Navegación por capas: solo los botones cambian de capa. Cada capa conserva su propio scroll interno. */
+html, body { width:100%; height:100%; overflow:hidden !important; }
+main { margin:0; }
+.capa { position:fixed; inset:0; width:100%; height:100svh; min-height:100svh !important; overflow-y:auto; overflow-x:hidden; display:none !important; }
+.capa.activa { display:block !important; }
+.hero.capa.activa { display:grid !important; }
+.capa::-webkit-scrollbar { width:10px; }
+.capa::-webkit-scrollbar-thumb { background:rgba(90,70,20,.22); border-radius:10px; }
+.nav-buttons { display:flex; justify-content:center; align-items:center; gap:14px; padding:24px 20px 45px; position:relative; z-index:10; }
+.nav-btn { min-width:125px; }
+.hero .nav-buttons { display:none; }
+
+/* Fondo especial para Capa 3: recuerdos entre flores amarillas */
+.moments{
+  background:
+    radial-gradient(circle at 8% 12%, rgba(245,202,67,.22) 0 7%, transparent 24%),
+    radial-gradient(circle at 92% 18%, rgba(255,226,105,.20) 0 6%, transparent 23%),
+    radial-gradient(circle at 18% 88%, rgba(128,155,92,.16) 0 7%, transparent 25%),
+    radial-gradient(circle at 88% 82%, rgba(245,202,67,.16) 0 8%, transparent 26%),
+    linear-gradient(135deg,#fffdf4 0%,#f8f1d6 48%,#eef1dc 100%);
+  isolation:isolate;
+}
+
+.moments::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.92;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22420%22%20height%3D%22300%22%20viewBox%3D%220%200%20420%20300%22%3E%0A%20%20%3Cg%20fill%3D%22%238a6a16%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2217%22%20font-weight%3D%22600%22%20opacity%3D%220.42%22%3E%0A%20%20%20%20%3Ctext%20x%3D%2224%22%20y%3D%2242%22%20transform%3D%22rotate%28-8%2024%2042%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22190%22%20y%3D%2230%22%20transform%3D%22rotate%287%20190%2030%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22325%22%20y%3D%2272%22%20transform%3D%22rotate%28-5%20325%2072%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2288%22%20y%3D%22125%22%20transform%3D%22rotate%286%2088%20125%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22255%22%20y%3D%22118%22%20transform%3D%22rotate%28-9%20255%20118%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22352%22%20y%3D%22165%22%20transform%3D%22rotate%288%20352%20165%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2218%22%20y%3D%22205%22%20transform%3D%22rotate%285%2018%20205%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22165%22%20y%3D%22195%22%20transform%3D%22rotate%28-6%20165%20195%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22285%22%20y%3D%22238%22%20transform%3D%22rotate%287%20285%20238%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2260%22%20y%3D%22278%22%20transform%3D%22rotate%28-7%2060%20278%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22365%22%20y%3D%22286%22%20transform%3D%22rotate%28-4%20365%20286%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  background-repeat:repeat;
+  background-size:420px 300px;
+}
+
+.moments > *{position:relative;z-index:1;}
+
+
+.moments::after{
+  content:"🌻   ✦   🌼   ✦   🌻";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:18px;
+  z-index:-1;
+  text-align:center;
+  font-size:clamp(1.4rem,3vw,2.3rem);
+  letter-spacing:clamp(.3rem,2vw,1.2rem);
+  opacity:.13;
+  pointer-events:none;
+  filter:blur(.2px);
+}
+
+.moments .section-heading h2,
+.moments .section-heading p{
+  text-shadow:0 2px 18px rgba(111,91,30,.08);
+}
+
+.moments .memory-frame{
+  border-radius:42px;
+  background:rgba(255,255,255,.28);
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:inset 0 0 70px rgba(255,255,255,.28);
+}
+
+@media (max-width:700px){
+  .moments::after{bottom:10px;font-size:1.25rem;letter-spacing:.35rem}
+  .moments .memory-frame{border-radius:28px}
+}
+
+
+/* Decoración de nombres por capa: se mantiene todo el contenido existente. */
+.hero{
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22520%22%20height%3D%22380%22%20viewBox%3D%220%200%20520%20380%22%3E%3Cg%20fill%3D%22%238a6a16%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22600%22%20opacity%3D%220.38%22%3E%3Ctext%20x%3D%2228%22%20y%3D%2252%22%20transform%3D%22rotate%28-8%2028%2052%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22220%22%20y%3D%2234%22%20transform%3D%22rotate%287%20220%2034%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22390%22%20y%3D%2278%22%20transform%3D%22rotate%28-5%20390%2078%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2295%22%20y%3D%22158%22%20transform%3D%22rotate%286%2095%20158%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22145%22%20transform%3D%22rotate%28-9%20300%20145%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22430%22%20y%3D%22205%22%20transform%3D%22rotate%288%20430%20205%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2222%22%20y%3D%22245%22%20transform%3D%22rotate%285%2022%20245%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22190%22%20y%3D%22230%22%20transform%3D%22rotate%28-6%20190%20230%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22350%22%20y%3D%22285%22%20transform%3D%22rotate%287%20350%20285%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2270%22%20y%3D%22345%22%20transform%3D%22rotate%28-7%2070%20345%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22285%22%20y%3D%22355%22%20transform%3D%22rotate%28-4%20285%20355%29%22%3EAnge%F0%9F%8C%BB%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E"), radial-gradient(circle at 50% 80%,rgba(246,214,109,.42),transparent 35%), linear-gradient(180deg,#fffdf7 0%,#fff8df 58%,#e8efdf 100%);
+  background-repeat:repeat, no-repeat, no-repeat;
+  background-size:520px 380px, auto, auto;
+}
+
+.bouquets{
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22520%22%20height%3D%22380%22%20viewBox%3D%220%200%20520%20380%22%3E%3Cg%20fill%3D%22%238a6a16%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22600%22%20opacity%3D%220.38%22%3E%3Ctext%20x%3D%2228%22%20y%3D%2252%22%20transform%3D%22rotate%28-8%2028%2052%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22220%22%20y%3D%2234%22%20transform%3D%22rotate%287%20220%2034%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22390%22%20y%3D%2278%22%20transform%3D%22rotate%28-5%20390%2078%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2295%22%20y%3D%22158%22%20transform%3D%22rotate%286%2095%20158%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22145%22%20transform%3D%22rotate%28-9%20300%20145%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22430%22%20y%3D%22205%22%20transform%3D%22rotate%288%20430%20205%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2222%22%20y%3D%22245%22%20transform%3D%22rotate%285%2022%20245%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22190%22%20y%3D%22230%22%20transform%3D%22rotate%28-6%20190%20230%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22350%22%20y%3D%22285%22%20transform%3D%22rotate%287%20350%20285%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2270%22%20y%3D%22345%22%20transform%3D%22rotate%28-7%2070%20345%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22285%22%20y%3D%22355%22%20transform%3D%22rotate%28-4%20285%20355%29%22%3EGys%F0%9F%8C%BB%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E"), radial-gradient(circle at 15% 15%,rgba(246,214,109,.25),transparent 28%), radial-gradient(circle at 88% 78%,rgba(113,143,91,.18),transparent 30%), linear-gradient(135deg,#f8f4e5 0%,#f2ebc9 50%,#e8efdf 100%);
+  background-repeat:repeat, no-repeat, no-repeat, no-repeat;
+  background-size:520px 380px, auto, auto, auto;
+}
+
+.moments{
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22520%22%20height%3D%22380%22%20viewBox%3D%220%200%20520%20380%22%3E%3Cg%20fill%3D%22%238a6a16%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22600%22%20opacity%3D%220.38%22%3E%3Ctext%20x%3D%2228%22%20y%3D%2252%22%20transform%3D%22rotate%28-8%2028%2052%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22220%22%20y%3D%2234%22%20transform%3D%22rotate%287%20220%2034%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22390%22%20y%3D%2278%22%20transform%3D%22rotate%28-5%20390%2078%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2295%22%20y%3D%22158%22%20transform%3D%22rotate%286%2095%20158%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22145%22%20transform%3D%22rotate%28-9%20300%20145%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22430%22%20y%3D%22205%22%20transform%3D%22rotate%288%20430%20205%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2222%22%20y%3D%22245%22%20transform%3D%22rotate%285%2022%20245%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22190%22%20y%3D%22230%22%20transform%3D%22rotate%28-6%20190%20230%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22350%22%20y%3D%22285%22%20transform%3D%22rotate%287%20350%20285%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%2270%22%20y%3D%22345%22%20transform%3D%22rotate%28-7%2070%20345%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3Ctext%20x%3D%22285%22%20y%3D%22355%22%20transform%3D%22rotate%28-4%20285%20355%29%22%3EGuabita%F0%9F%8C%BB%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E"), radial-gradient(circle at 8% 12%, rgba(245,202,67,.22) 0 7%, transparent 24%), radial-gradient(circle at 92% 18%, rgba(255,226,105,.20) 0 6%, transparent 23%), radial-gradient(circle at 18% 88%, rgba(128,155,92,.16) 0 7%, transparent 25%), radial-gradient(circle at 88% 82%, rgba(245,202,67,.16) 0 8%, transparent 26%), linear-gradient(135deg,#fffdf4 0%,#f8f1d6 48%,#eef1dc 100%);
+  background-repeat:repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size:520px 380px, auto, auto, auto, auto, auto;
+}
+
+/* El patrón acompaña el contenido al hacer scroll en cada capa. */
+
+.moments::before{display:none;}
+
+/* Decoración de la Capa 4: Lindota🌻 */
+.music{
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='380' viewBox='0 0 520 380'%3E%3Cg fill='%238a6a16' font-family='Arial,sans-serif' font-size='18' font-weight='600' opacity='.38'%3E%3Ctext x='28' y='52' transform='rotate(-8 28 52)'%3ELindota🌻%3C/text%3E%3Ctext x='220' y='34' transform='rotate(7 220 34)'%3ELindota🌻%3C/text%3E%3Ctext x='390' y='78' transform='rotate(-5 390 78)'%3ELindota🌻%3C/text%3E%3Ctext x='95' y='158' transform='rotate(6 95 158)'%3ELindota🌻%3C/text%3E%3Ctext x='300' y='145' transform='rotate(-9 300 145)'%3ELindota🌻%3C/text%3E%3Ctext x='430' y='205' transform='rotate(8 430 205)'%3ELindota🌻%3C/text%3E%3Ctext x='22' y='245' transform='rotate(5 22 245)'%3ELindota🌻%3C/text%3E%3Ctext x='190' y='230' transform='rotate(-6 190 230)'%3ELindota🌻%3C/text%3E%3Ctext x='350' y='285' transform='rotate(7 350 285)'%3ELindota🌻%3C/text%3E%3Ctext x='70' y='345' transform='rotate(-7 70 345)'%3ELindota🌻%3C/text%3E%3Ctext x='285' y='355' transform='rotate(-4 285 355)'%3ELindota🌻%3C/text%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(circle at 12% 18%, rgba(245,202,67,.24), transparent 27%),
+    radial-gradient(circle at 88% 78%, rgba(113,143,91,.18), transparent 30%),
+    linear-gradient(135deg,#fffdf4 0%,#f8f1d6 48%,#eef1dc 100%);
+  background-repeat:repeat,no-repeat,no-repeat,no-repeat;
+  background-size:520px 380px,auto,auto,auto;
+}
+
+
+/* Decoración de la Capa 4: Lindota🌻 */
+.finale{
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='380' viewBox='0 0 520 380'%3E%3Cg fill='%238a6a16' font-family='Arial,sans-serif' font-size='18' font-weight='600' opacity='.38'%3E%3Ctext x='28' y='52' transform='rotate(-8 28 52)'%3ELindota🌻%3C/text%3E%3Ctext x='220' y='34' transform='rotate(7 220 34)'%3ELindota🌻%3C/text%3E%3Ctext x='390' y='78' transform='rotate(-5 390 78)'%3ELindota🌻%3C/text%3E%3Ctext x='95' y='158' transform='rotate(6 95 158)'%3ELindota🌻%3C/text%3E%3Ctext x='300' y='145' transform='rotate(-9 300 145)'%3ELindota🌻%3C/text%3E%3Ctext x='430' y='205' transform='rotate(8 430 205)'%3ELindota🌻%3C/text%3E%3Ctext x='22' y='245' transform='rotate(5 22 245)'%3ELindota🌻%3C/text%3E%3Ctext x='190' y='230' transform='rotate(-6 190 230)'%3ELindota🌻%3C/text%3E%3Ctext x='350' y='285' transform='rotate(7 350 285)'%3ELindota🌻%3C/text%3E%3Ctext x='70' y='345' transform='rotate(-7 70 345)'%3ELindota🌻%3C/text%3E%3Ctext x='285' y='355' transform='rotate(-4 285 355)'%3ELindota🌻%3C/text%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(circle at 12% 18%, rgba(245,202,67,.24), transparent 27%),
+    radial-gradient(circle at 88% 78%, rgba(113,143,91,.18), transparent 30%),
+    linear-gradient(135deg,#fffdf4 0%,#f8f1d6 48%,#eef1dc 100%);
+  background-repeat:repeat,no-repeat,no-repeat,no-repeat;
+  background-size:520px 380px,auto,auto,auto;
+}
